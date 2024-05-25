@@ -1,11 +1,14 @@
 const express = require('express')
+const cors = require('cors')
 require('dotenv').config()
 require('./Database/database_connection')
 const User = require('./Routes/auth')
+const Post = require('./Routes/postRoute')
 
 const app = express()
-const PORT = 3000
+const PORT = 8000
 
+app.use(cors())
 app.use(express.json())
 
 app.get('/',(req,res)=>{
@@ -13,5 +16,6 @@ app.get('/',(req,res)=>{
 })
 
 app.use('/auth',User)
+app.use('/post',Post)
 
 app.listen(PORT)

@@ -9,11 +9,11 @@ const router = express.Router()
 
 router.post('/signup', async (req, res) => {
 
-    const { name, photo, username,email, password  } = req.body
+    const { name, image, username,email, password  } = req.body
 
     try {
        
-        if (!name || !photo || !username || !email || !password  ) {
+        if (!name || !image || !username || !email || !password  ) {
             return res.status(400).json({ error: "All fields are required" })
         }
 
@@ -41,7 +41,7 @@ router.post('/signup', async (req, res) => {
        
         const newUser = await User({
             name,
-            photo,
+            image,
             username,
             email,
             password: hashedPassword,
